@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Merci de nous avoir contactés !</h2>
+<p>Voici un résumé de vos informations :</p>
+<ul>
+    <li><strong>Prénom :</strong> {{ data.first_name }}</li>
+    <li><strong>Nom :</strong> {{ data.last_name }}</li>
+    <li><strong>Email :</strong> {{ data.email }}</li>
+    <li><strong>Pays :</strong> {{ data.country }}</li>
+    <li><strong>Genre :</strong> {{ data.gender }}</li>
+    <li><strong>Sujets :</strong> {{ data.subject | join(', ') }}</li>
+    <li><strong>Message :</strong> {{ data.message }}</li>
+</ul>
+{% endblock %}

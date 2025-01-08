@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Formulaire de Contact</h2>
+<form method="POST" action="/thanks">
+    <label for="first_name">Prénom :</label>
+    <input type="text" id="first_name" name="first_name" value="{{ data.first_name }}" required>
+    <span style="color: red;">{{ errors.first_name }}</span>
+
+    <label for="last_name">Nom :</label>
+    <input type="text" id="last_name" name="last_name" value="{{ data.last_name }}" required>
+    <span style="color: red;">{{ errors.last_name }}</span>
+    <br>
+    <label for="email">Email :</label>
+    <input type="email" id="email" name="email" value="{{ data.email }}" required>
+    <span style="color: red;">{{ errors.email }}</span>
+
+    <label for="country">Pays :</label>
+    <select id="country" name="country" required>
+        <option value="France" {% if data.country == 'France' %}selected{% endif %}>France</option>
+        <option value="Belgique" {% if data.country == 'Belgique' %}selected{% endif %}>Belgique</option>
+        <option value="Suisse" {% if data.country == 'Suisse' %}selected{% endif %}>Suisse</option>
+    </select>
+    <br>
+    <label for="message">Message :</label>
+    <textarea id="message" name="message" required>{{ data.message }}</textarea>
+
+    <label>Genre :</label>
+    <input type="radio" name="gender" value="H" {% if data.gender == 'H' %}checked{% endif %}> Homme
+    <input type="radio" name="gender" value="F" {% if data.gender == 'F' %}checked{% endif %}> Femme
+    <br>
+    <label>Sujets :</label>
+    <input type="checkbox" name="subject" value="Réparation" {% if 'Réparation' in data.subject %}checked{% endif %}> Réparation
+    <input type="checkbox" name="subject" value="Commande" {% if 'Commande' in data.subject %}checked{% endif %}> Commande
+    <input type="checkbox" name="subject" value="Autres" {% if 'Autres' in data.subject %}checked{% endif %}> Autres
+
+    <input type="hidden" name="honeypot" value="">
+
+    <button type="submit">Envoyer</button>
+</form>
+{% endblock %}
